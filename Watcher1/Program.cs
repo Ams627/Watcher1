@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,9 @@ namespace Watcher1
                     Console.WriteLine($"{count++} Changed");
                 };
                 watcher.EnableRaisingEvents = true;
+
+                var timer = new Timer((o) => { Console.WriteLine("timer"); }, null, 0, 2000);
+
                 System.Threading.Thread.Sleep(100000000);
             }
             catch (Exception ex)
